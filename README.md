@@ -64,8 +64,7 @@ docker exec -it namenode bash
 Create a simple text as the input:
 
 ```bash
-mkdir input
-echo "This is a simple test for Hadoop" >input/test.txt
+echo "This is a simple test for Hadoop" > test.txt
 ```
 
 Then create the corresponding input folder on HDFS:
@@ -77,7 +76,7 @@ hadoop fs -mkdir -p input
 And copy out test file to HDFS:
 
 ```bash
-hdfs dfs -put ./input/* input
+hdfs dfs -put test.txt input/test.txt
 ```
 
 After preparing the input file, we will get the WordCount program for Hadoop 3.2.1 in the `hadoop-mapreduce-examples` executable jar file (If you use another Hadoop version, please change the path):
@@ -86,13 +85,13 @@ After preparing the input file, we will get the WordCount program for Hadoop 3.2
 curl https://repo1.maven.org/maven2/org/apache/hadoop/hadoop-mapreduce-examples/3.2.1/hadoop-mapreduce-examples-3.2.1.jar --output map_reduce.jar
 ```
 
-Submit our job to hadoop (The program `wordcount` can have different names on each `hadoop-mapreduce-examples` version):
+Submit our WordCount Job to Hadoop (The program `wordcount` can have different names on each `hadoop-mapreduce-examples` version):
 
 ```bash
 hadoop jar map_reduce.jar wordcount input output
 ```
 
-If everything run fine, we can see the output by requesting data from HDFS:
+If everything runs fine, we can see the output by requesting data from HDFS:
 
 ```bash
 hdfs dfs -cat output/part-r-00000
