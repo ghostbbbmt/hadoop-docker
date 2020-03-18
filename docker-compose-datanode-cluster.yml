@@ -1,0 +1,19 @@
+version: "3"
+
+services:
+  datanode_cluster:
+    image: bde2020/hadoop-datanode:2.0.0-hadoop3.2.1-java8
+    container_name: datanode_cluster
+    restart: always
+    volumes:
+      - hadoop_datanode_cluster:/hadoop/dfs/data
+    # Datanode container must bind the host's IP.
+    # If not, the datanode hostname will be the container's id
+    # Notice: ONLY WORK ON LINUX.
+    # If use MacOS/Windows, consider using Docker Swarm
+    network_mode: host
+    env_file:
+      - ./datanode-cluster.env
+
+volumes:
+  hadoop_datanode_cluster:
