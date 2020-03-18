@@ -113,6 +113,10 @@ Hadoop  1
 
 See detail in [big-data-europe/docker-hadoop](https://github.com/big-data-europe/docker-hadoop)
 
+## Uninstall Hadoop clusters
+
+You can use my [Docker Commands Toolkt](https://github.com/ghostbbbmt/docker-commands) to clean your host machine
+
 ## Known issues
 
 - Namenode will bind `namenode` as its host address. So downloading file via Namenode File System Browser will auto redirect to `http://namenode:9870/webhdfs/v1/....`, which cause errors.
