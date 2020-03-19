@@ -1,6 +1,6 @@
 #!/bin/bash
 
-docker-compose down
+docker-compose -f docker-compose-datanode-cluster.yml down
 
 if [ $? -eq 0 ]; then
     echo "Done stopping Hadoop Datanode Cluster Docker container"
